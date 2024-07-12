@@ -18,9 +18,19 @@ gpt4embedding = GPT4AllEmbeddings(model_name=model_name, gpt4all_kwargs=gpt4all_
 vectorstore = Chroma.from_documents(documents=all_splits, embedding=gpt4embedding)
 
 question = "What is Chain of Thought?"
-
 docs = vectorstore.similarity_search(question)
 
 print(len(docs))
 
 print(docs[0])
+
+
+from langchain_community.llms import GPT4All
+
+llama3 = GPT4All(model="/home/scifaipy/llms/llama3/Meta-Llama-3-8B-Instruct-Q5_K_M.gguf",
+                 max_tokens=2048,
+                 )
+
+response = llama3.invoke("Explain me the explanatory graph paper for CNNs.")
+
+print(response)
