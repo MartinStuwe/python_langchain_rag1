@@ -17,7 +17,7 @@ gpt4all_kwargs = {'allow_download': 'True'}
 gpt4embedding = GPT4AllEmbeddings(model_name=model_name, gpt4all_kwargs=gpt4all_kwargs)
 vectorstore = Chroma.from_documents(documents=all_splits, embedding=gpt4embedding)
 
-question = "What are the approaches to tesk decomposition?"
+question = "What is Chain of Thought?"
 
 docs = vectorstore.similarity_search(question)
 
